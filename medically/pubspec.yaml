@@ -1,0 +1,93 @@
+name: medically
+description: A new Flutter project.
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  google_fonts:
+  font_awesome_flutter:
+  bloc: ^7.0.0
+  flutter_bloc: ^7.0.0
+  conditional_builder:
+  intl:
+  dio: ^4.0.0
+  hexcolor: ^2.0.3
+  shared_preferences: ^2.0.5
+  smooth_page_indicator: ^0.2.0
+  fluttertoast: ^8.0.6
+  carousel_slider: ^3.0.0
+  flutter_staggered_animations: ^1.0.0
+  flutter_staggered_grid_view:
+  flushbar:
+  wiggly_circle: ^1.0.0
+  line_icons:
+  flutter_icons:
+  google_maps_flutter: ^2.0.6
+  geolocator: ^7.2.0+1
+  maps_launcher:
+  url_launcher:
+  flutter_signin_button:
+  firebase_core:
+  firebase_auth:
+  cloud_firestore:
+  firebase_database:
+  http: ^0.13.3
+  shimmer: ^2.0.0
+  flutter_typeahead: ^3.1.3
+  timeago: ^3.1.0
+  charts_flutter:
+  flutter_svg:
+  bubble_tab_indicator:
+  fl_chart:
+  connectivity: ^3.0.2
+  wifi_info_flutter: ^2.0.0
+#  image_picker:
+#  firebase_storage:
+  flutter_snake_navigationbar:
+  responsive_builder: ^0.4.1
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+  fonts:
+    - family: VEXA-
+      fonts:
+        - asset: assets/fonts/VEXA-.ttf
+    - family: VEXA-thin
+      fonts:
+        - asset: assets/fonts/VEXA-thin.ttf
+    - family: VEXA-ITALIC
+      fonts:
+         - asset: assets/fonts/VEXA-ITALIC.ttf
+    - family: Tajawal-Bold
+      fonts:
+        - asset: assets/fonts/Tajawal-Bold.ttf
+    - family: Tajawal-Regular
+      fonts:
+        - asset: assets/fonts/Tajawal-Regular.ttf
+    - family: ElMessiri-Bold
+      fonts:
+        - asset: assets/fonts/ElMessiri-Bold.ttf
+    - family: ElMessiri-Medium
+      fonts:
+        - asset: assets/fonts/ElMessiri-Medium.ttf
+    - family: ElMessiri-Regular
+      fonts:
+        - asset: assets/fonts/ElMessiri-Regular.ttf
+    - family: ElMessiri-SemiBold
+      fonts:
+        - asset: assets/fonts/ElMessiri-SemiBold.ttf
+
+
+
+

@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "866295073547",
+    "project_id": "algny-5153f",
+    "storage_bucket": "algny-5153f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:866295073547:android:8e3ce92209cdacfeb7f00e",
+        "android_client_info": {
+          "package_name": "com.ahmedomar.medically"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "866295073547-9ii9b50fq6pdgld3bloaqpkbo93ud9lb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNnOJBfMeX8g_J6fvDm0hSuSdj1mvlMcc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "866295073547-9ii9b50fq6pdgld3bloaqpkbo93ud9lb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:866295073547:android:9bc66b9564161514b7f00e",
+        "android_client_info": {
+          "package_name": "com.ahmedomar.shop_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "866295073547-9ii9b50fq6pdgld3bloaqpkbo93ud9lb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNnOJBfMeX8g_J6fvDm0hSuSdj1mvlMcc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "866295073547-9ii9b50fq6pdgld3bloaqpkbo93ud9lb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
