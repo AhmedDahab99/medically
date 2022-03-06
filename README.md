@@ -1,6 +1,9 @@
 # medically
 
-A new Flutter project.
+Emergency Medical App
+1. By locating it on map, the user can find nearest hospitals.
+2. User can consult with any doctors and he although can communicate with them.
+3. User can follow the statistics of COVID-19 of any country as he searches.
 
 ## Getting Started
 
