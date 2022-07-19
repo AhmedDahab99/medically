@@ -1,5 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_icons/flutter_icons.dart';
@@ -11,6 +9,7 @@ import 'package:medically/shared/componnet/constants.dart';
 import 'package:medically/shared/network/local/cached_helper.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 import '../../../shared/cubit/app_cubit.dart';
 import '../../../shared/cubit/app_states.dart';
 import '../../../shared/style/themes/dark_theme.dart';
@@ -1154,7 +1153,7 @@ class _LoginRegisterScreenState extends State<LoginRegisterScreen> {
   }
 
   Widget buildBottomHalfContainer(
-      {@required bool showShadow, Function onPressed, IconData icon}) {
+      { bool showShadow, Function onPressed, IconData icon}) {
     return AnimatedPositioned(
       duration: Duration(milliseconds: 750),
       curve: Curves.easeInCubic,

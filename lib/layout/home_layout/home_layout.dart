@@ -1,4 +1,3 @@
-import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
@@ -9,14 +8,11 @@ import 'package:medically/modules/Authrization/Login/login_register.dart';
 import 'package:medically/modules/Authrization/firebase_services/firebase_auth.dart';
 import 'package:medically/shared/componnet/component.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 import '../../shared/componnet/component.dart';
 import '../../shared/cubit/app_cubit.dart';
 import '../../shared/style/themes/dark_theme.dart';
 import '../../shared/style/themes/light_theme.dart';
-import 'dart:async';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 // ignore: must_be_immutable
 class HomeLayout extends StatefulWidget {
@@ -36,7 +32,6 @@ class _HomeLayoutState extends State<HomeLayout> {
         var cubit = HomeCubit().get(context);
         var appCubit = AppCubit.get(context);
         return Scaffold(
-
           appBar: AppBar(
             backgroundColor: appCubit.isDark
                 ? darkTheme.appBarTheme.backgroundColor

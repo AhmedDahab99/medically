@@ -14,50 +14,55 @@ import '../models/country_summary.dart';
 import '../models/time_series_cases.dart';
 
 class CountryStatistics extends StatelessWidget {
-
   final List<CountrySummaryModel> summaryList;
 
   CountryStatistics({@required this.summaryList});
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AppCubit,AppStates>(
-        listener: (context,states){},
-        builder: (context,states){
-          AppCubit appCubit=AppCubit.get(context);
-          return  Column(
+    return BlocConsumer<AppCubit, AppStates>(
+        listener: (context, states) {},
+        builder: (context, states) {
+          AppCubit appCubit = AppCubit.get(context);
+          return Column(
             children: <Widget>[
               buildCard(
                 "CONFIRMED",
                 summaryList[summaryList.length - 1].confirmed,
-                appCubit.isDark?darkTheme.primaryColorLight:lightTheme.primaryColorDark,
+                appCubit.isDark
+                    ? darkTheme.primaryColorLight
+                    : lightTheme.primaryColorDark,
                 "ACTIVE",
                 summaryList[summaryList.length - 1].active,
-                appCubit.isDark?darkTheme.primaryColorLight:lightTheme.primaryColorDark,
-                context:context,
+                appCubit.isDark
+                    ? darkTheme.primaryColorLight
+                    : lightTheme.primaryColorDark,
+                context: context,
               ),
-
               buildCard(
                 "RECOVERED",
                 summaryList[summaryList.length - 1].recovered,
-                appCubit.isDark?Colors.white:lightTheme.primaryColorDark,
+                appCubit.isDark ? Colors.white : lightTheme.primaryColorDark,
                 "DEATH",
                 summaryList[summaryList.length - 1].death,
-                appCubit.isDark?darkTheme.primaryColorLight:lightTheme.primaryColorDark,
-                context:context,
+                appCubit.isDark
+                    ? darkTheme.primaryColorLight
+                    : lightTheme.primaryColorDark,
+                context: context,
               ),
-
-              buildCardChart(summaryList,context: context),
-
+              buildCardChart(summaryList, context: context),
             ],
           );
-        }
-    );
+        });
   }
 
-  Widget buildCard(String leftTitle, int leftValue,Color leftColor, String rightTitle, int rightValue, Color rightColor,{@required context}){
+  Widget buildCard(String leftTitle, int leftValue, Color leftColor,
+      String rightTitle, int rightValue, Color rightColor,
+      {@required context}) {
     return Card(
-      color: AppCubit.get(context).isDark?darkTheme.cardTheme.color:lightTheme.primaryColorLight,
+      color: AppCubit.get(context).isDark
+          ? darkTheme.cardTheme.color
+          : lightTheme.primaryColorLight,
       elevation: 1,
       child: Container(
         height: 100,
@@ -65,85 +70,68 @@ class CountryStatistics extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-
                 Text(
                   leftTitle,
-                  style: AppCubit.get(context).isDark?darkTheme.textTheme.subtitle1
-                      :lightTheme.textTheme.subtitle1,
+                  style: AppCubit.get(context).isDark
+                      ? darkTheme.textTheme.subtitle1
+                      : lightTheme.textTheme.subtitle1,
                 ),
-
                 Expanded(
                   child: Container(),
                 ),
-
-                Text(
-                  "Total",
-                  style:  AppCubit.get(context).isDark
-                      ? lightTheme.textTheme.subtitle1.copyWith(
-                      color: Colors.white60
-                  )
-                      : lightTheme.textTheme.subtitle1
-                ),
-
-                Text(
-                  leftValue.toString().replaceAllMapped(reg, mathFunc),
-                  style: AppCubit.get(context).isDark
-                          ? darkTheme.textTheme.headline1
-                          : lightTheme.textTheme.headline1
-                ),
+                Text("Total",
+                    style: AppCubit.get(context).isDark
+                        ? lightTheme.textTheme.subtitle1
+                            .copyWith(color: Colors.white60)
+                        : lightTheme.textTheme.subtitle1),
+                Text(leftValue.toString().replaceAllMapped(reg, mathFunc),
+                    style: AppCubit.get(context).isDark
+                        ? darkTheme.textTheme.headline1
+                        : lightTheme.textTheme.headline1),
               ],
             ),
-
             Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: <Widget>[
-
                 Text(
                   rightTitle,
-                  style: AppCubit.get(context).isDark?darkTheme.textTheme.subtitle1
-                      :lightTheme.textTheme.subtitle1,
+                  style: AppCubit.get(context).isDark
+                      ? darkTheme.textTheme.subtitle1
+                      : lightTheme.textTheme.subtitle1,
                 ),
-
                 Expanded(
                   child: Container(),
                 ),
-
-                 Text(
-                  "Total",
-                  style: AppCubit.get(context).isDark
-                      ? lightTheme.textTheme.subtitle1.copyWith(
-                      color: Colors.white60
-                  )
-                      : lightTheme.textTheme.subtitle1
-                ),
-
-                Text(
-                  rightValue.toString().replaceAllMapped(reg, mathFunc),
-                  style: AppCubit.get(context).isDark
-                          ? darkTheme.textTheme.headline1
-                          : lightTheme.textTheme.headline1
-                ),
+                Text("Total",
+                    style: AppCubit.get(context).isDark
+                        ? lightTheme.textTheme.subtitle1
+                            .copyWith(color: Colors.white60)
+                        : lightTheme.textTheme.subtitle1),
+                Text(rightValue.toString().replaceAllMapped(reg, mathFunc),
+                    style: AppCubit.get(context).isDark
+                        ? darkTheme.textTheme.headline1
+                        : lightTheme.textTheme.headline1),
               ],
             ),
-
           ],
         ),
       ),
     );
   }
 
-  Widget buildCardChart(List<CountrySummaryModel> summaryList,{@required context}){
+  Widget buildCardChart(List<CountrySummaryModel> summaryList,
+      {@required context}) {
     return Card(
       elevation: 1,
       child: Container(
         decoration: BoxDecoration(
-            color: AppCubit.get(context).isDark?darkTheme.primaryColorLight:lightTheme.primaryColorLight,
-          borderRadius: BorderRadius.circular(10)
-        ),
+            color: AppCubit.get(context).isDark
+                ? darkTheme.primaryColorLight
+                : lightTheme.primaryColorLight,
+            borderRadius: BorderRadius.circular(10)),
         height: 190,
         padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         child: Chart(
@@ -154,8 +142,8 @@ class CountryStatistics extends StatelessWidget {
     );
   }
 
-  static List<charts.Series<TimeSeriesCases, DateTime>> _createData(List<CountrySummaryModel> summaryList) {
-
+  static List<charts.Series<TimeSeriesCases, DateTime>> _createData(
+      List<CountrySummaryModel> summaryList) {
     List<TimeSeriesCases> confirmedData = [];
     List<TimeSeriesCases> activeData = [];
     List<TimeSeriesCases> recoveredData = [];
@@ -168,7 +156,7 @@ class CountryStatistics extends StatelessWidget {
       deathData.add(TimeSeriesCases(item.date, item.death));
     }
 
-    return [      
+    return [
       new charts.Series<TimeSeriesCases, DateTime>(
         id: 'Confirmed',
         colorFn: (_, __) => charts.ColorUtil.fromDartColor(kConfirmedColor),
@@ -197,8 +185,6 @@ class CountryStatistics extends StatelessWidget {
         measureFn: (TimeSeriesCases cases, _) => cases.cases,
         data: deathData,
       ),
-      
     ];
   }
-
 }

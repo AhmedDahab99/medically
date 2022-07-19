@@ -9,6 +9,7 @@ import 'package:medically/shared/network/local/cached_helper.dart';
 import 'package:medically/shared/network/remote/dio_helper.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 import 'layout/home_layout/cubit/home_cubit.dart';
 import 'layout/home_layout/home_layout.dart';
 import 'modules/Authrization/Login/login_register.dart';
@@ -23,7 +24,6 @@ Future<void> main() async {
   ResponsiveSizingConfig.instance.setCustomBreakpoints(
     ScreenBreakpoints(desktop: 800, tablet: 550, watch: 200),
   );
-  Bloc.observer = MyBlocObserver();
   DioHelper.init();
   await CashedHelper.init();
 
@@ -45,11 +45,17 @@ Future<void> main() async {
   print(onBoarding);
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((_) {
-    runApp(MyApp(
-      isDark: isDark,
-      startWidget: widget,
-      email:saveEmail,
-    ));
+    BlocOverrides.runZoned(
+          () {
+            runApp(MyApp(
+              isDark: isDark,
+              startWidget: widget,
+              email: saveEmail,
+            ));
+      },
+      blocObserver: MyBlocObserver(),
+    );
+
   });
 }
 
@@ -59,27 +65,32 @@ class MyApp extends StatelessWidget {
   final email;
 
   MyApp({this.isDark, this.startWidget, this.email});
+
   @override
   Widget build(BuildContext context) {
-    return Directionality(textDirection: TextDirection.rtl, child: MultiBlocProvider(
-      providers: [
-        BlocProvider(
-            create: (context) => AppCubit()..changeAppMode(fromShared: isDark)),
-        BlocProvider(create: (context) => HomeCubit()),
-      ],
-      child: BlocConsumer<AppCubit, AppStates>(
-        listener: (context, state) {},
-        builder: (context, state) {
-          return MaterialApp(
-              debugShowCheckedModeBanner: false,
-              theme: lightTheme,
-              darkTheme: darkTheme,
-              themeMode: AppCubit.get(context).isDark
-                  ? ThemeMode.dark
-                  : ThemeMode.light,
-              home: email == null ?LoginRegisterScreen() : HomeLayout());
-        },
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+              create: (context) =>
+                  AppCubit()..changeAppMode(fromShared: isDark)),
+          BlocProvider(create: (context) => HomeCubit()),
+        ],
+        child: BlocConsumer<AppCubit, AppStates>(
+          listener: (context, state) {},
+          builder: (context, state) {
+            return MaterialApp(
+                debugShowCheckedModeBanner: false,
+                theme: lightTheme,
+                darkTheme: darkTheme,
+                themeMode: AppCubit.get(context).isDark
+                    ? ThemeMode.dark
+                    : ThemeMode.light,
+                home: email == null ? LoginRegisterScreen() : HomeLayout());
+          },
+        ),
       ),
-    ),);
+    );
   }
 }
